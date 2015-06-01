@@ -21,7 +21,7 @@ public class Menu {
         try {
             return menuItems.get(index);
         }catch (Exception e){
-            return MenuItem.ERRORMENUITEM;
+            return MenuItem.ERROR;
         }
     }
 
