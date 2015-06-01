@@ -11,6 +11,6 @@ public class BookServiceTest {
     @Test
     public void getBooksTest() {
         BookService bookService = new BookService();
-        assertEquals(BookDB.getAllBooks().size(), bookService.getBooks().size());
+        assertEquals(BookDB.getAllBooks().size(), bookService.listBooks().size());
     }
 }

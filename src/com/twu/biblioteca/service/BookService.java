@@ -21,23 +21,28 @@ public class BookService {
         BorrowBookDB.saveBook(user, chooseBook);
     }
 
-    public void listBook() {
-        System.out.print("Choose books you want to borrow:");
+    public void borrowBook() {
         Scanner reader = new Scanner(System.in);
-        int chooseBookIndex = reader.nextInt();
-        Book chooseBook = BookDB.getBookByIndex(chooseBookIndex);
-        User user = new User("wubang", Role.STUDENT);
-        saveAsBorrow(user, chooseBook);
+        int chooseBookIndex;
+        do{
+            System.out.print("Choose books you want to borrow:");
+            chooseBookIndex = reader.nextInt();
+            Book chooseBook = BookDB.getBookByIndex(chooseBookIndex);
+            User user = new User("wubang", Role.STUDENT);
+            saveAsBorrow(user, chooseBook);
+        }while (chooseBookIndex < 0 || chooseBookIndex >= BookDB.getAllBooks().size());
+        System.out.print("Thank you! Enjoy the book");
     }
 
-    public void borrowBook() {
+    public List<Book> listBooks() {
         List<Book> books = BookDB.getAllBooks();
         for (Book book : books) {
             System.out.println(book.toString());
         }
+        return books;
     }
 
-    public void listBorrowBook() {
+    public Map<User, ArrayList<Book>> listBorrowBooks() {
         Map<User, ArrayList<Book>> borrowBooks = BorrowBookDB.getAll();
         for (User user1 : borrowBooks.keySet()) {
             ArrayList<Book> books1 = borrowBooks.get(user1);
@@ -45,5 +50,6 @@ public class BookService {
                 System.out.println("[userName:" + user1.getName() + "---bookName" + book.getName() + "]");
             }
         }
+        return borrowBooks;
     }
 }
