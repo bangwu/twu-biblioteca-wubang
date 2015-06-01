@@ -12,10 +12,22 @@ import java.util.List;
  * Created by Thoughtworks on 5/31/15.
  */
 public class BookDB {
-    public static List<Book> books = new ArrayList<Book>();
+    private static List<Book> books = new ArrayList<Book>();
     static {
         for(int i=0; i<10; i++){
-            books.add(i, new Book("java"+1, new Date(), new User("wubang", Role.AUTHOR)));
+            books.add(i, new Book("java", new Date(), new User("wubang", Role.AUTHOR)));
         }
+    }
+
+    public static Book getBookByIndex(int chooseBookIndex) {
+        return books.get(chooseBookIndex);
+    }
+
+    public static List<Book> getAllBooks() {
+        return books;
+    }
+
+    public static void removeBook(Book chooseBook) {
+        books.remove(chooseBook);
     }
 }

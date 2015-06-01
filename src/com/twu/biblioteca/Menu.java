@@ -17,15 +17,16 @@ public class Menu {
         }
         System.out.print("input number:");
         Scanner reader = new Scanner(System.in);
+        int index = reader.nextInt();
         try {
-            return menuItems.get(reader.nextInt());
-        }finally {
+            return menuItems.get(index);
+        }catch (Exception e){
             return MenuItem.ERRORMENUITEM;
         }
     }
 
     public void addMenuItem(MenuItem menuItem) {
-        menuItems.add(menuItems.size(), menuItem);
+        menuItems.add(menuItem);
     }
 
     public List<MenuItem> getItems() {
