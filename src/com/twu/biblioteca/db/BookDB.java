@@ -20,7 +20,10 @@ public class BookDB {
     }
 
     public static Book getBookByIndex(int chooseBookIndex) {
-        return books.get(chooseBookIndex);
+        if(chooseBookIndex < books.size() && chooseBookIndex >= 0)
+            return books.get(chooseBookIndex);
+        else
+            return null;
     }
 
     public static List<Book> getAllBooks() {
@@ -29,5 +32,9 @@ public class BookDB {
 
     public static void removeBook(Book chooseBook) {
         books.remove(chooseBook);
+    }
+
+    public static void saveBook(Book chooseBook) {
+        books.add(chooseBook);
     }
 }

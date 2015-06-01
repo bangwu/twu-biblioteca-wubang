@@ -14,6 +14,7 @@ public class BibliotecaApp {
         menu.addMenuItem(MenuItem.LISTBOOKMENUITEM);
         menu.addMenuItem(MenuItem.BORROWBOOK);
         menu.addMenuItem(MenuItem.LISTBORROWBOOKMENUITEM);
+        menu.addMenuItem(MenuItem.RETURNBOOK);
         menu.addMenuItem(MenuItem.QUITMENUITEM);
         MenuItem menuItem;
         do {
@@ -28,6 +29,9 @@ public class BibliotecaApp {
                     break;
                 case LISTBORROWBOOKMENUITEM:
                     bookService.listBorrowBooks();
+                    break;
+                case RETURNBOOK:
+                    bookService.returnBook();
                     break;
                 case QUITMENUITEM:
                     System.out.println("This System will be exit!");
