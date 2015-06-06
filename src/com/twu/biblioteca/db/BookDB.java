@@ -20,7 +20,7 @@ public class BookDB {
         books.add(new Book("Head First C++", new Date(), new User("liqi")));
     }
 
-    public static List<Book> getAll() {
+    public static List<Book> getAllAvailable() {
         List<Book> result = new ArrayList<Book>();
         for (Book book : books){
             if(book.getStatus()){
@@ -60,4 +60,17 @@ public class BookDB {
         return result;
     }
 
+    public static List<Book> getBookByUser(User user) {
+        List<Book> result = new ArrayList<Book>();
+        for (Book book : books){
+            if(book.getBorrowedUser() == null || book.getBorrowedUser().equals(user)){
+                result.add(book);
+            }
+        }
+        return result;
+    }
+
+    public static List<Book> getAllBooks() {
+        return books;
+    }
 }

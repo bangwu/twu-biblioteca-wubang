@@ -14,6 +14,6 @@ public class BookListCommandTest {
     public void process() throws Exception {
         BookListCommand bookListCommand = new BookListCommand();
         bookListCommand.process();
-        assertEquals(5, BookDB.getAll().size());
+        assertEquals(5, BookDB.getAllAvailable().size());
     }
 }

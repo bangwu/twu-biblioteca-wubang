@@ -6,7 +6,14 @@ import com.twu.biblioteca.unit.Message;
  * Created by Thoughtworks on 6/6/15.
  */
 public enum CommandName {
-    BookListName("BookListCommand"), BorrowBookName("BorrowBookCommand"), QuitName("QuitCommand"), ReturnBookName("ReturnBookCommand"), ErrorName("ValidCommand");
+    BookListName("BookListCommand"),
+    BorrowBookName("BorrowBookCommand"),
+    QuitName("QuitCommand"),
+    ReturnBookName("ReturnBookCommand"),
+    ErrorName("ValidCommand"),
+    MovieListName("MovieListCommand"),
+    LoginName("LoginCommand");
+
     private String name;
 
     CommandName(String name) {
@@ -24,7 +31,9 @@ public enum CommandName {
         Message.putln("1 "+CommandName.BookListName);
         Message.putln("2 "+CommandName.BorrowBookName);
         Message.putln("3 "+CommandName.ReturnBookName);
-        Message.putln("4 "+CommandName.QuitName);
+        Message.putln("4 "+CommandName.MovieListName);
+        Message.putln("4 "+CommandName.LoginName);
+        Message.putln("5 "+CommandName.QuitName);
         Message.putln("===========================================");
         Message.put("Please input command:");
     }

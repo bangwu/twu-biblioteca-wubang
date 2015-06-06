@@ -17,6 +17,10 @@ public class CommandNameFactoryImpl implements CommandNameFactory {
             commandName = CommandName.ReturnBookName;
         }else if (commandNameString.equalsIgnoreCase("Quit")){
             commandName = CommandName.QuitName;
+        }else if(commandNameString.equalsIgnoreCase("MovieList")){
+            commandName = CommandName.MovieListName;
+        }else if(commandNameString.equalsIgnoreCase("Login")){
+            commandName = CommandName.LoginName;
         }else{
             commandName = CommandName.ErrorName;
         }

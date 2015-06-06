@@ -75,4 +75,10 @@ public class Book {
     public void setBorrowUser(User borrowUser) {
         this.borrowedUser = borrowUser;
     }
+
+    public User getBorrowedUser() {
+        return borrowedUser;
+    }
+
+
 }

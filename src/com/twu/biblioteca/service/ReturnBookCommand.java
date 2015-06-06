@@ -9,18 +9,19 @@ import com.twu.biblioteca.unit.Message;
 /**
  * Created by Thoughtworks on 6/6/15.
  */
-public class ReturnBookCommand extends Command{
+public class ReturnBookCommand extends Command {
+
     @Override
-    public void process() {
+    protected void execute() {
         Message.put("Please input book name: ");
         String bookName = ConsoleInput.getString();
         Book book = BookDB.getBookByName(bookName);
-        if(book!=null && !book.getStatus()){
+        if (book != null && !book.getStatus()) {
             boolean status = BookDB.update(book.getId(), null, true);
-            if(status){
+            if (status) {
                 Message.putln("Thank you for returning the book.");
             }
-        }else{
+        } else {
             Message.putln("That is not a valid book to return.");
         }
     }
