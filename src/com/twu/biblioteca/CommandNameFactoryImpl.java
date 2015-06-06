@@ -1,5 +1,8 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.model.Role;
+import com.twu.biblioteca.unit.Cache;
+
 /**
  * Created by Thoughtworks on 6/6/15.
  */
@@ -19,11 +22,16 @@ public class CommandNameFactoryImpl implements CommandNameFactory {
             commandName = CommandName.QuitName;
         }else if(commandNameString.equalsIgnoreCase("MovieList")){
             commandName = CommandName.MovieListName;
-        }else if(commandNameString.equalsIgnoreCase("Login")){
+        }else if(commandNameString.equalsIgnoreCase("Login")&& Cache.isCustomer()){
             commandName = CommandName.LoginName;
-        }else{
+        }else if(commandNameString.equalsIgnoreCase("Logout")&& Cache.isNotCustomer()){
+            commandName = CommandName.LogoutName;
+        }else if(commandNameString.equalsIgnoreCase("UserInfo") && Cache.isNotCustomer()){
+            commandName = CommandName.UserInfoCommand;
+        }else {
             commandName = CommandName.ErrorName;
         }
         return commandName;
     }
+
 }
