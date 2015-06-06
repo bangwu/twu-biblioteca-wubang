@@ -1,5 +1,7 @@
 package com.twu.biblioteca;
 
+import com.twu.biblioteca.model.Role;
+import com.twu.biblioteca.unit.Cache;
 import com.twu.biblioteca.unit.Message;
 
 /**
@@ -12,9 +14,19 @@ public enum CommandName {
     ReturnBookName("ReturnBookCommand"),
     ErrorName("ValidCommand"),
     MovieListName("MovieListCommand"),
-    LoginName("LoginCommand");
+    LoginName("LoginCommand"),
+    UserInfoCommand("UserInfoCommand"), LogoutName("LogoutCommand");
 
     private String name;
+
+    public static CommandName getExamType(String name) {
+        for (CommandName examType : CommandName.values()) {
+            if (examType.getName().equalsIgnoreCase(name+"Command")) {
+                return examType;
+            }
+        }
+        return BookListName;
+    }
 
     CommandName(String name) {
         this.name = name;
@@ -25,16 +37,25 @@ public enum CommandName {
         return name;
     }
 
-    public static void showAllCommandName(){
+    public static void showAllCommandName() {
         Message.putln("");
         Message.putln("==============Menu List====================");
-        Message.putln("1 "+CommandName.BookListName);
-        Message.putln("2 "+CommandName.BorrowBookName);
-        Message.putln("3 "+CommandName.ReturnBookName);
-        Message.putln("4 "+CommandName.MovieListName);
-        Message.putln("4 "+CommandName.LoginName);
-        Message.putln("5 "+CommandName.QuitName);
+        Message.putln("---" + CommandName.BookListName);
+        Message.putln("---" + CommandName.BorrowBookName);
+        Message.putln("---" + CommandName.ReturnBookName);
+        Message.putln("---" + CommandName.MovieListName);
+        if (Cache.isNotCustomer()) {
+            Message.putln("---" + CommandName.LogoutName);
+            Message.putln("---" + CommandName.UserInfoCommand);
+        } else {
+            Message.putln("---" + CommandName.LoginName);
+        }
+        Message.putln("---" + CommandName.QuitName);
         Message.putln("===========================================");
         Message.put("Please input command:");
+    }
+
+    public String getName() {
+        return name;
     }
 }

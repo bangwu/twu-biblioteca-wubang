@@ -23,4 +23,13 @@ public class Cache {
     public static User getCache(String userName) {
         return caches.get(userName);
     }
+
+
+    public static boolean isNotCustomer() {
+        return getCache("user").getRole() != Role.Customer;
+    }
+
+    public static boolean isCustomer() {
+        return !isNotCustomer();
+    }
 }

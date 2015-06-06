@@ -14,6 +14,7 @@ public class UserDB {
     static {
         users.add(new User("wu-bang", "12345678","wubang@thouhtworks.com", "wuhan guanggu", "12345678910", Role.Admin));
         users.add(new User("wang-yun", "12345678","wangyun@thouhtworks.com", "wuhan guanggu", "13135652403", Role.Student));
+        users.add(new User("li-si", "12345678","lisi@thouhtworks.com", "wuhan guanggu", "13164600981", Role.Student));
     }
 
     public static User findByName(String name) {
